@@ -3,6 +3,31 @@ filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+let g:vundle_default_git_proto = 'git'
 
 " Let Vundle manage Vundle
-Bundle 'gmarik/vundle'		" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles
+Bundle 'tomtom/tcomment_vim'
+Bundle 'scrooloose/nerdtree'
+
+filetype plugin indent on 	" required!
+
+syntax on
+
+" Vim layout
+set cursorline
+set colorcolumn=80
+set title
+set ruler
+set number
+set mouse=a
+
+
+" Toggle Nerd Tree with Ctrl+L 
+map <C-L> :NERDTreeToggle<CR>
+" Show the highlight group names for syntax highlighting
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
