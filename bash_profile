@@ -6,11 +6,22 @@ export CLICOLOR=cons25
 export http_proxy="http://lon1.sme.zscaler.net:80"
 export https_proxy="http://lon1.sme.zscaler.net:9480"
 
+kill_proxy() {
+  export http_proxy=
+  export https_proxy=
+}
+
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH:~/bin"
 
 # RBENV
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# Rails Fast Testing
+export DEFERRED_GARBAGE_COLLECTION=true
+
+# ViM
+export EDITOR=vim
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -37,7 +48,7 @@ alias b='bundle'
 alias bx='b exec'
 alias be='bx'
 alias rs='bx rspec'
-alias guard='title GUARD ${PWD##*/}; bx guard && wait $!; title Console'
+# alias guard='title GUARD ${PWD##*/}; bx guard && wait $!; title Console'
 alias fuji_update='b update sop --source sop; bx rake db:drop; bx rake db:create; bx rake db:migrate'
 
 # search functions

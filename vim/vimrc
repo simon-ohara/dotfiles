@@ -24,6 +24,21 @@ set ruler
 set number
 set mouse=a
 
+" Indent
+set cindent
+set smartindent
+
+" Softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+" Colour Scheme
+color sohsweet
+
+" Swap file directory - stop swp polluting the working directory
+set backupdir=$HOME/.vim/tmp
+set directory=$HOME/.vim/tmp
 
 " Toggle Nerd Tree with Ctrl+L 
 map <C-L> :NERDTreeToggle<CR>
@@ -31,3 +46,11 @@ map <C-L> :NERDTreeToggle<CR>
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+au BufRead,BufNewFile *.ui set filetype=ruby
+au BufRead,BufNewFile *.pjax.erb set filetype=html
+au BufRead,BufNewFile *.mustache set filetype=javascript
+au BufNewFile,BufRead *.ctp set filetype=html
+au BufNewFile,BufRead Gemfile set filetype=ruby
+au BufNewFile,BufRead Rakefile set filetype=ruby
+au BufNewFile,BufRead Fudgefile set filetype=ruby

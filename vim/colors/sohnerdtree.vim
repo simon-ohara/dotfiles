@@ -8,7 +8,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let g:colors_name = "sohsweet"
+let b:colors_name = "sohnerdtree"
 
 " Editor Styles
 hi Cursor ctermfg=NONE ctermbg=231 cterm=NONE guifg=NONE guibg=#f8f8f0 gui=NONE
@@ -131,5 +131,3 @@ hi NERDTreeDir ctermfg=75 ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi NERDTreeExecFile ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi NERDTreeFile ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi NERDTreeUp ctermfg=214 ctermbg=NONE cterm=bold guifg=NONE guibg=NONE gui=NONE
-hi NERDTreeBookmark ctermfg=214 ctermbg=1 cterm=bold guifg=NONE guibg=NONE gui=NONE
-hi NTNormal ctermfg=214 ctermbg=1 cterm=bold guifg=NONE guibg=NONE gui=NONE
