@@ -42,6 +42,8 @@ set directory=$HOME/.vim/tmp
 
 " Toggle Nerd Tree with Ctrl+L 
 map <C-L> :NERDTreeToggle<CR>
+" Show hidden files
+let NERDTreeShowHidden=1
 " Show the highlight group names for syntax highlighting
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
@@ -51,6 +53,8 @@ au BufRead,BufNewFile *.ui set filetype=ruby
 au BufRead,BufNewFile *.pjax.erb set filetype=html
 au BufRead,BufNewFile *.mustache set filetype=javascript
 au BufNewFile,BufRead *.ctp set filetype=html
+au BufNewFile,BufRead *.ru set filetype=ruby
 au BufNewFile,BufRead Gemfile set filetype=ruby
+au BufNewFile,BufRead Guardfile set filetype=ruby
 au BufNewFile,BufRead Rakefile set filetype=ruby
 au BufNewFile,BufRead Fudgefile set filetype=ruby

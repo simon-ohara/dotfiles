@@ -40,6 +40,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias bp='vim ~/.bash_profile &'
 alias reset='source ~/.bash_profile; reset'
 alias colours='bash ~/bin/bash/colors.sh'
+alias clear_stores='find . -name ".DS_Store" -depth -exec rm {} \;'
 dev() { cd ~/Development/"$1"; }
 
 # development tasks
