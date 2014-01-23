@@ -3,8 +3,6 @@ if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
 fi
 
 export CLICOLOR=cons25
-export http_proxy="http://lon1.sme.zscaler.net:80"
-export https_proxy="http://lon1.sme.zscaler.net:9480"
 
 kill_proxy() {
   export http_proxy=
@@ -12,6 +10,7 @@ kill_proxy() {
 }
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH:~/bin"
+export no_proxy=127.0.0.1
 
 # RBENV
 export PATH="$HOME/.rbenv/bin:$PATH"
