@@ -12,6 +12,10 @@ kill_proxy() {
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH:~/bin"
 export no_proxy=127.0.0.1
 
+# NVM
+source $(brew --prefix nvm)/nvm.sh
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+
 # RBENV
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
@@ -21,6 +25,9 @@ export DEFERRED_GARBAGE_COLLECTION=true
 
 # ViM
 export EDITOR=vim
+
+# Gem Server
+export GEM_SERVER="http://sage:soppass@gems.platform.sageone.com"
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -125,6 +132,24 @@ function get_branch_status {
   else
     echo -e "$GIT_CLEAN"
   fi
+}
+
+function sb {
+  channel=${2:-"general"}
+  curl --data "$1" https://sage-ui-team.slack.com/services/hooks/slackbot?token=ZtRnkE2dQpIf6jdZLOuVIDyc\&channel=%23$channel
+}
+
+function bot {
+  text=$1
+  channel=${2:-"general"}
+  username=${3:-"my"}
+  emoji=${4:-"ghost"}
+  token=6MojHVG1ZJazhB7tAWyRhfY5
+
+  payload=\'payload={"channel": "#$channel", "username": "$username", "text": "$text", "icon_emoji": ":$emoji:"}\'
+
+#  curl -X POST --data-urlencode $payload https://sage-ui-team.slack.com/services/hooks/incoming-webhook?token=$token
+echo $payload
 }
 
 # Set the prompt according to which repo the current dir is in - if any
