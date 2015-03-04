@@ -6,17 +6,12 @@ call vundle#rc()
 " ++++++++++++++++++++++++++++
 " http://tinyurl.com/mwm8dsp
 
-" Vundle on GitHub
+" Plugins on GitHub
 Plugin 'gmarik/vundle'
-
-" NerdTree on GitHub
 Plugin 'scrooloose/nerdtree'
-
-" AirLine on GitHub
 Plugin 'bling/vim-airline'
-
-" tComment on GitHub
 Plugin 'tomtom/tcomment_vim'
+Plugin 'flazz/vim-colorschemes'
 
 " ++++++++++++++++++++++++++++
 
@@ -42,7 +37,10 @@ set shiftwidth=2
 set expandtab
 
 " Colour Scheme
-" color sohsweet
+" syntax enable
+set t_Co=256
+set background=dark
+color gruvbox
 
 " Swap file directory - stop swp polluting the working directory
 set backupdir=$HOME/.vim/tmp

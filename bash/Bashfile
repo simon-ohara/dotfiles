@@ -2,6 +2,12 @@
 
 # This is the main bash file to be symlinked as .bashrc
 
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 # Store actual location as reference for includes
 BASHLOC=$(readlink -f $BASH_SOURCE); BASHLOC="${BASHLOC%/*}"
 if [[ ! -d "$BASHLOC" ]]; then BASHLOC="$PWD"; fi
