@@ -28,7 +28,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # System tasks
 alias bp='vim ~/.bash_profile &'
 alias refresh='source ~/.bash_profile; reset'
-alias colours='bash $DIR/scripts/colors'
+alias colours='bash $BASHLOC/scripts/colors'
 
 # Development tasks
 alias g="git"
