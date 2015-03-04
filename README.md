@@ -1,6 +1,13 @@
-# OSX System configuration files
+# JS Stack on Ubuntu
 
-````bash
-> git clone git@github.com:simon-ohara/dotfiles.git
-> bash dotfiles/install_dotfiles.sh
-````
+### Configuration Files
+
+* .gitconfig
+* .bashrc (with modularised scripts)
+* .vimrc (using vundle - includes .vim/ folder)
+
+
+```bash
+git clone git@github.com:simon-ohara/dotfiles.git
+bash dotfiles/install
+```
