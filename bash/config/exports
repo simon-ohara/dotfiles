@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Common working paths
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH:~/bin"
+
+# Make ViM the default terminal editor
+export EDITOR=vim

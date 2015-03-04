@@ -1,68 +1,4 @@
-if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
-. `brew --prefix`/etc/bash_completion.d/git-completion.bash
-fi
-
-export CLICOLOR=cons25
-
-kill_proxy() {
-  export http_proxy=
-  export https_proxy=
-}
-
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH:~/bin"
-export no_proxy=127.0.0.1
-
-# NVM
-source $(brew --prefix nvm)/nvm.sh
-[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
-
-# RBENV
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# Rails Fast Testing
-export DEFERRED_GARBAGE_COLLECTION=true
-
-# ViM
-export EDITOR=vim
-
-# Gem Server
-export GEM_SERVER="http://sage:soppass@gems.platform.sageone.com"
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-#File system traversal
-alias ..='cd ../'
-alias ...='cd ../../'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# system tasks
-alias bp='vim ~/.bash_profile &'
-alias reset='source ~/.bash_profile; reset'
-alias colours='bash ~/bin/bash/colors.sh'
-alias clear_stores='find . -name ".DS_Store" -depth -exec rm {} \;'
-dev() { cd ~/Development/"$1"; }
-
-# development tasks
-alias g="git"
-alias b='bundle'
-alias bx='b exec'
-alias be='bx'
-alias rs='bx rspec'
-# alias guard='title GUARD ${PWD##*/}; bx guard && wait $!; title Console'
-alias fuji_update='b update sop --source sop; bx rake db:drop; bx rake db:create; bx rake db:migrate'
-
-# search functions
-alias findme='grep -nir --exclude=\*.svn\* --exclude=\*.swp'
-alias whouses='grep -lir --exclude=\*.svn\* --exclude=\*.swp'
-alias findfile='find . -iname'
-alias inspect='du -csh'
+#!/bin/bash
 
 #------------------------------------------------------
 # CUSTOM COMMAND PROMPT
@@ -134,24 +70,6 @@ function get_branch_status {
   fi
 }
 
-function sb {
-  channel=${2:-"general"}
-  curl --data "$1" https://sage-ui-team.slack.com/services/hooks/slackbot?token=ZtRnkE2dQpIf6jdZLOuVIDyc\&channel=%23$channel
-}
-
-function bot {
-  text=$1
-  channel=${2:-"general"}
-  username=${3:-"my"}
-  emoji=${4:-"ghost"}
-  token=6MojHVG1ZJazhB7tAWyRhfY5
-
-  payload=\'payload={"channel": "#$channel", "username": "$username", "text": "$text", "icon_emoji": ":$emoji:"}\'
-
-#  curl -X POST --data-urlencode $payload https://sage-ui-team.slack.com/services/hooks/incoming-webhook?token=$token
-echo $payload
-}
-
 # Set the prompt according to which repo the current dir is in - if any
 function set_prompt {
   # Set the default prompt
@@ -187,26 +105,6 @@ function set_prompt {
 
   # Set prompt with GIT labels
   PS1="$PS1_TIME$GIT_LABEL $repo_name $GIT_BRANCH ${current_branch} ${branch_status} $GIT_PATH\w$PS1_MARKER"
-}
-
-# Output chmod reference diagram and usage
-function chmod_ref {
-  echo "
-        OWNER  GROUP   WORLD
-        r w x  r w x   r w x
-        1 1 1  1 0 1   1 0 1
-          7      5       5
-          |______|_______|
-                 |
-                755
-  "
-
-  echo "
- 000  001  010  011  100  101  110  111
-  0    1    2    3    4    5    6    7
-  "
-
-  chmod --help
 }
 
 # Chief function to call all / any custom functions

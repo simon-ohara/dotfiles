@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# This is the main bash file to be symlinked as .bashrc
+
+# Store actual location as reference for includes
+BASHLOC=$(readlink -f $BASH_SOURCE); BASHLOC="${BASHLOC%/*}"
+if [[ ! -d "$BASHLOC" ]]; then BASHLOC="$PWD"; fi
+
+# Include all configuration files
+CONFIGS="${BASHLOC}/config/*"
+for C in $CONFIGS; do
+  if [ -f "${C}" ]; then
+    . "${C}"
+  fi
+done
+unset CONFIGS

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Interacting with the slack API
+
+function sb {
+  channel=${2:-"general"}
+  curl --data "$1" https://sage-ui-team.slack.com/services/hooks/slackbot?token=ZtRnkE2dQpIf6jdZLOuVIDyc\&channel=%23$channel
+}
+
+function bot {
+  text=$1
+  channel=${2:-"general"}
+  username=${3:-"my"}
+  emoji=${4:-"ghost"}
+  token=6MojHVG1ZJazhB7tAWyRhfY5
+
+  payload=\'payload={"channel": "#$channel", "username": "$username", "text": "$text", "icon_emoji": ":$emoji:"}\'
+
+  #curl -X POST --data-urlencode $payload https://sage-ui-team.slack.com/services/hooks/incoming-webhook?token=$token
+  echo $payload
+}
