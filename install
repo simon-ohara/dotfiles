@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Store the Dotfiles Directory Location
+DOTLOC="${BASH_SOURCE%/*}"
+if [[ ! -d "$DOTLOC" ]]; then DOTLOC="$PWD"; fi
+
+# Linkup the .gitconfig
+ln -s $DOTLOC/gitconfig $HOME/.gitconfig
+
+# Linkup the .bashrc
+ln -s $DOTLOC/bash/Bashfile $HOME/.bashrc
+# Load up the .bashrc
+source $HOME/.bashrc
+
+# Linkup the .vimrc
+ln -s $DOTLOC/vimrc $HOME/.vimrc
+# Linkup the .vim/ folder
+ln -s $DOTLOC/vim $HOME/.vim
+# Install the plugins
+vim +PluginInstall +qall
+# Linkup the colors/ folder
+ln -s $DOTLOC/vim/bundle/vim-colorschemes/colors $DOTLOC/vim/colors
