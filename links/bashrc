@@ -9,7 +9,7 @@ case $- in
 esac
 
 # Store actual location as reference for includes
-BASHLOC=$(readlink -f $BASH_SOURCE); BASHLOC="${BASHLOC%/*}"
+BASHLOC=$(readlink -f $BASH_SOURCE); BASHLOC="${BASHLOC%links/*}bash"
 if [[ ! -d "$BASHLOC" ]]; then BASHLOC="$PWD"; fi
 
 # Include all configuration files
@@ -19,4 +19,4 @@ for C in $CONFIGS; do
     . "${C}"
   fi
 done
-unset CONFIGS
+unset -v CONFIGS

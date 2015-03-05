@@ -3,22 +3,49 @@
 # Store the Dotfiles Directory Location
 DOTLOC="${BASH_SOURCE%/*}"
 if [[ ! -d "$DOTLOC" ]]; then DOTLOC="$PWD"; fi
+ABSDOTLOC="${HOME}/${DOTLOC}"
 
-# Linkup the .gitconfig
-ln -s $DOTLOC/gitconfig $HOME/.gitconfig
+# Create Vim Folder Link
+VIMLINK="${DOTLOC}/links/vim"
+if [ -L $VIMLINK ]; then rm $VIMLINK; fi
+ln -s "${ABSDOTLOC}/vim" $VIMLINK
+unset -v VIMLINK
 
-# Linkup the .bashrc
-ln -s $DOTLOC/bash/Bashfile $HOME/.bashrc
+# Create Symlinks for all Dotfiles
+DOTFILES="${DOTLOC}/links/*"
+for D in $DOTFILES; do
+  HOMEFILE="${HOME}/.${D##*/}"
+  if [ -L $HOMEFILE ]; then
+    # If the existing dotfile is a symlink
+    # Remove it
+    rm $HOMEFILE
+  elif [[ -f $HOMEFILE || -d $HOMEFILE ]]; then
+    BKP="${HOME}/.bkp"
+    if [[ ! -d $BKP ]]; then mkdir $BKP; fi
+    # If the existing dotfile is a file or directory
+    # Move it to backup folder
+    mv $HOMEFILE "${BKP}/"
+    unset -v BKP
+  fi
+  # Create symlink
+  ln -s $D $HOMEFILE
+  unset -v HOMEFILE
+done
+unset -v DOTFILES
+
 # Load up the .bashrc
 source $HOME/.bashrc
 
-# Linkup the .vimrc
-ln -s $DOTLOC/vimrc $HOME/.vimrc
-# Linkup the .vim/ folder
-ln -s $DOTLOC/vim $HOME/.vim
+# Additional ViM setup
 # Install the plugins
 vim +PluginInstall +qall
 # Linkup the colors/ folder
-ln -s $DOTLOC/vim/bundle/vim-colorschemes/colors $DOTLOC/vim/colors
+COLORSLINK="${DOTLOC}/vim/colors"
+if [ -L $COLORSLINK ]; then rm $COLORSLINK; fi
+ln -s "${ABSDOTLOC}/vim/bundle/vim-colorschemes/colors" $COLORSLINK
+unset -v COLORSLINK
 # Install fonts
 bash $DOTLOC/vim/bundle/fonts/install.sh
+echo "Refreshing the font cache..."
+sudo fc-cache -fv
+echo "Font cache refresh complete :)"
