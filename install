@@ -8,7 +8,7 @@ ABSDOTLOC="${HOME}/${DOTLOC}"
 # Create Vim Folder Link
 VIMLINK="${DOTLOC}/links/vim"
 if [ -L $VIMLINK ]; then rm $VIMLINK; fi
-ln -s "${ABSDOTLOC}/vim" $VIMLINK
+ln -s "${DOTLOC}/vim" $VIMLINK
 unset -v VIMLINK
 
 # Create Symlinks for all Dotfiles
@@ -37,13 +37,13 @@ unset -v DOTFILES
 source $HOME/.bashrc
 
 # Additional ViM setup
-git clone https://github.com/gmarik/Vundle.vim.git "${DOTLOC}/vim/bundle/Vundle.vim"
+git clone https://github.com/gmarik/Vundle.vim.git "${DOTLOC}/vim/bundle/vundle"
 # Install the plugins
-vim +PluginInstall +qall
+vim "+silent PluginInstall" "+silent qall"
 # Linkup the colors/ folder
 COLORSLINK="${DOTLOC}/vim/colors"
 if [ -L $COLORSLINK ]; then rm $COLORSLINK; fi
-ln -s "${ABSDOTLOC}/vim/bundle/vim-colorschemes/colors" $COLORSLINK
+ln -s "${DOTLOC}/vim/bundle/vim-colorschemes/colors" $COLORSLINK
 unset -v COLORSLINK
 # Install fonts
 bash $DOTLOC/vim/bundle/fonts/install.sh
