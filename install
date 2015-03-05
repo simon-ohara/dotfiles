@@ -20,3 +20,5 @@ ln -s $DOTLOC/vim $HOME/.vim
 vim +PluginInstall +qall
 # Linkup the colors/ folder
 ln -s $DOTLOC/vim/bundle/vim-colorschemes/colors $DOTLOC/vim/colors
+# Install fonts
+bash $DOTLOC/vim/bundle/fonts/install.sh
