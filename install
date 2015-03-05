@@ -37,6 +37,7 @@ unset -v DOTFILES
 source $HOME/.bashrc
 
 # Additional ViM setup
+git clone https://github.com/gmarik/Vundle.vim.git "${DOTLOC}/vim/bundle/Vundle.vim"
 # Install the plugins
 vim +PluginInstall +qall
 # Linkup the colors/ folder
