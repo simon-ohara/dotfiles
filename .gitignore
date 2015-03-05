@@ -1,7 +1,9 @@
 .DS_Store
 *.swp
 *.swo
-vim/tmp/
+vim/tmp/*
 vim/bundle/*
 vim/colors
 links/vim
+
+!.gitkeep
