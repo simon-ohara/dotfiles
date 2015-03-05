@@ -41,7 +41,6 @@ set expandtab
 " syntax enable
 set t_Co=256
 set background=dark
-color gruvbox
 
 " Swap file directory - stop swp polluting the working directory
 set backupdir=$HOME/.vim/tmp
