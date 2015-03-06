@@ -32,6 +32,7 @@ alias colours='bash $BASHLOC/scripts/colors'
 
 # Development tasks
 alias g="git"
+alias vx="vagrant ssh -c"
 
 # Search functions
 alias findme='grep -nir --exclude=\*.svn\* --exclude=\*.swp'
@@ -40,4 +41,7 @@ alias findfile='find . -iname'
 alias inspect='du -csh'
 
 # Reference
-alias chmodref='bash $DIR/scripts/chmod'
+alias chmodref='bash $BASHLOC/scripts/chmod'
+
+# MP3 Editing
+alias mp3info='bash $BASHLOC/scripts/mp3'

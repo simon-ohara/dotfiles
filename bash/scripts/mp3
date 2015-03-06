@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function mp3info {
+  eyeD3 $1
+}
+
+function listmp3 {
+  FILES=$1
+
+  for F in $FILES; do
+    mp3info $F
+  done
+}
+
+if [ -f "$1" ]; then
+  mp3info $1
+elif [ -d "$1" ]; then
+  listmp3 $1
+fi
