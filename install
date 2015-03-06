@@ -45,7 +45,6 @@ COLORSLINK="${DOTLOC}/vim/colors"
 if [ -L $COLORSLINK ]; then rm $COLORSLINK; fi
 ln -s "${DOTLOC}/vim/bundle/vim-colorschemes/colors" $COLORSLINK
 unset -v COLORSLINK
-echo "color gruvbox" >> "${DOTLOC}/links/vimrc"
 # Install fonts
 bash $DOTLOC/vim/bundle/fonts/install.sh
 echo "Refreshing the font cache..."
