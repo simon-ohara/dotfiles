@@ -4,6 +4,7 @@
 vim/tmp/*
 vim/bundle/*
 vim/colors
+vim/view
 links/vim
 
 !.gitkeep

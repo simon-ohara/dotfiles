@@ -1,8 +1,10 @@
+" Pathogen requirements
 set nocompatible
 filetype off
+" Vundle requirements
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-
+" PLUGINS
 " ++++++++++++++++++++++++++++
 " http://tinyurl.com/mwm8dsp
 
@@ -13,44 +15,43 @@ Plugin 'bling/vim-airline'
 Plugin 'powerline/fonts'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-scripts/restore_view.vim'
+Plugin 'ap/vim-css-color'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'chrisbra/csv.vim'
 
 " ++++++++++++++++++++++++++++
-
 filetype plugin indent on
 
-syntax on
-
-" Vim layout
+" Layout
 set cursorline
 set colorcolumn=80
 set title
 set ruler
 set number
 set mouse=a
-
-" Indent
+" Indenting
 set cindent
 set smartindent
-
-" Softtabs, 2 spaces
+" Tabbing
 set tabstop=2
 set shiftwidth=2
 set expandtab
-
-" Colour Scheme
-silent! color gruvbox
+" ColorScheme
 set t_Co=256
 set background=dark
-
-" Swap file directory - stop swp polluting the working directory
+syntax on
+silent! color gruvbox
+" Swap file directory
+" Stop swp polluting the working directory
 set backupdir=$HOME/.vim/tmp
 set directory=$HOME/.vim/tmp
 
+" NERDTree Configs
 " Toggle Nerd Tree with Ctrl+L
 map <C-L> :NERDTreeToggle<CR>
 " Show hidden files
 let NERDTreeShowHidden=1
-
 " Airline Configs
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -67,18 +68,21 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 
+" Key Mappings
 " Show the highlight group names for syntax highlighting
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+" MIME Type / Language Mappings
 au BufRead,BufNewFile *.resx set filetype=xml
 au BufRead,BufNewFile *.ui set filetype=ruby
 au BufRead,BufNewFile *.pjax.erb set filetype=html
 au BufRead,BufNewFile *.mustache set filetype=javascript
-au BufNewFile,BufRead *.ctp set filetype=html
-au BufNewFile,BufRead *.ru set filetype=ruby
-au BufNewFile,BufRead Gemfile set filetype=ruby
-au BufNewFile,BufRead Guardfile set filetype=ruby
-au BufNewFile,BufRead Rakefile set filetype=ruby
-au BufNewFile,BufRead Fudgefile set filetype=ruby
+au BufRead,BufNewFile *.ctp set filetype=html
+au BufRead,BufNewFile *.ru set filetype=ruby
+au BufRead,BufNewFile Gemfile set filetype=ruby
+au BufRead,BufNewFile Guardfile set filetype=ruby
+au BufRead,BufNewFile Rakefile set filetype=ruby
+au BufRead,BufNewFile Fudgefile set filetype=ruby
+let g:used_javascript_libs = 'underscore,backbone,jquery,angularjs'
