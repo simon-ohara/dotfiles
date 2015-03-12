@@ -32,7 +32,13 @@ alias colours='bash $BASHLOC/scripts/colors'
 
 # Development tasks
 alias g="git"
-alias vx="vagrant ssh -c"
+function vx {
+  # SSH into running Vagrant Box and execute passed command
+  # Connection closed immediately after execution
+  # All output of the command can be seen as if it were ran locally
+  eval 'vagrant ssh -c '"'cd /vagrant/; "$*"'"
+}
+
 
 # Search functions
 alias findme='grep -nir --exclude=\*.svn\* --exclude=\*.swp'
