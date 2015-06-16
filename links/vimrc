@@ -18,6 +18,8 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/restore_view.vim'
 Plugin 'ap/vim-css-color'
 Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'digitaltoad/vim-jade'
 Plugin 'chrisbra/csv.vim'
 
 " ++++++++++++++++++++++++++++
