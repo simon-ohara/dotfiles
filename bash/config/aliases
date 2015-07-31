@@ -31,6 +31,7 @@ alias refresh='source ~/.bash_profile; reset'
 alias colours='bash $BASHLOC/scripts/colors'
 
 # Development tasks
+source $BASHLOC/scripts/git-bash-completion
 alias g="git"
 function vx {
   # SSH into running Vagrant Box and execute passed command
