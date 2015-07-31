@@ -81,6 +81,7 @@ au BufRead,BufNewFile *.resx set filetype=xml
 au BufRead,BufNewFile *.ui set filetype=ruby
 au BufRead,BufNewFile *.pjax.erb set filetype=html
 au BufRead,BufNewFile *.mustache set filetype=javascript
+au BufRead,BufNewFile Gruntfile set filetype=javascript
 au BufRead,BufNewFile *.ctp set filetype=html
 au BufRead,BufNewFile *.ru set filetype=ruby
 au BufRead,BufNewFile Gemfile set filetype=ruby
