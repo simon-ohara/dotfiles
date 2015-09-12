@@ -21,6 +21,7 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'chrisbra/csv.vim'
+Plugin 'terryma/vim-multiple-cursors'
 
 " ++++++++++++++++++++++++++++
 filetype plugin indent on
@@ -48,6 +49,7 @@ silent! color gruvbox
 " Stop swp polluting the working directory
 set backupdir=$HOME/.vim/tmp
 set directory=$HOME/.vim/tmp
+set backupcopy=yes
 
 " NERDTree Configs
 " Toggle Nerd Tree with Ctrl+L
