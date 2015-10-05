@@ -90,4 +90,4 @@ au BufRead,BufNewFile Gemfile set filetype=ruby
 au BufRead,BufNewFile Guardfile set filetype=ruby
 au BufRead,BufNewFile Rakefile set filetype=ruby
 au BufRead,BufNewFile Fudgefile set filetype=ruby
-let g:used_javascript_libs = 'underscore,backbone,jquery,angularjs'
+let g:used_javascript_libs = 'underscore,react,flux'
