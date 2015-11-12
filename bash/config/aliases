@@ -32,7 +32,8 @@ alias colours='bash $BASHLOC/scripts/colors'
 
 # Development tasks
 source $BASHLOC/scripts/git-bash-completion
-alias g="git"
+alias g='git'
+alias grm='g ls-files --deleted -z | xargs -0 git rm' # remove deleted files from git
 function vx {
   # SSH into running Vagrant Box and execute passed command
   # Connection closed immediately after execution
