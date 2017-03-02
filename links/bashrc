@@ -20,3 +20,6 @@ for C in $CONFIGS; do
   fi
 done
 unset -v CONFIGS
+
+export NVM_DIR="/home/simon.ohara/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
