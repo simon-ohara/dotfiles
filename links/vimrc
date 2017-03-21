@@ -81,6 +81,9 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+" Toggle search term highlighting
+map <C-H> :set hlsearch!<CR>
+
 " MIME Type / Language Mappings
 au BufRead,BufNewFile *.resx set filetype=xml
 au BufRead,BufNewFile *.ui set filetype=ruby
