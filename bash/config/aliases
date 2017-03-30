@@ -62,7 +62,7 @@ SPLICER2SERVER_DIR=$SPLICE_DIR/application/splicer2server
 SPLICER_BUILD_DIR=$SPLICER2SERVER_DIR/build/xenial_testing/release64
 # alias splice_webui='python webui.py '
 alias splice_build='cd $SPLICER_BUILD_DIR; remedy $SPLICE_DIR/src.remedy splicer2server_webui'
-alias splice_run='cd $SPLICER2SERVER_DIR/webui; python webui.py ../splicer2server_app/config/splicer2server_config.xml ascp/autosvr.xml --port 8080'
+alias splice_run='python $SPLICER2SERVER_DIR/webui/webui.py $SPLICER2SERVER_DIR/splicer2server_app/config/splicer2server_config.xml $SPLICER2SERVER_DIR/webui/ascp/autosvr.xml --port 8080'
 alias splice_run_old='cd $SPLICER2SERVER_DIR/webui; python webui.py --port 8080'
 alias splice='splice_build && splice_run'
 
