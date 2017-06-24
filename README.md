@@ -34,31 +34,24 @@ source ~/.bashrc
 
 ### Install NodeJS
 
-[Official Instructions](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
+[Install NVM](https://github.com/creationix/nvm#git-install)
 
-Add the repository:
+The exports for having NVM loaded in the bashrc have already been added.
 
-```bash
-curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
-```
-
-Enable `universe` repository:
+Reload the bashrc:
 
 ```bash
-sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
+source ~/.bashrc
 ```
 
-Fix and update installed packages:
+Now install the lastest LTS of node:
 
 ```bash
-sudo dpkg --configure -a && sudo apt-get update && sudo apt-get -y upgrade
+nvm install --lts
 ```
 
-Install NodeJS:
+After installation verify the correct version is being used:
 
 ```bash
-sudo apt-get install -y nodejs
+node -v
 ```
-
-
-
