@@ -28,7 +28,6 @@ if [[ ! -d "$DOTLOC" ]]; then DOTLOC="$PWD"; fi
 # Create Symlinks for all Dotfiles
 DOTFILES="${DOTLOC}/links/*"
 for FILE in $DOTFILES; do symlink-dotfile $FILE; done
-unset -v DOTFILES
 
 # Load up the .bashrc
 source $TARGET_LOC/.bashrc
@@ -45,9 +44,11 @@ vim "+silent PluginInstall" "+silent qall"
 COLORSLINK="${VIM_LOC}/colors"
 if [ -L $COLORSLINK ]; then rm $COLORSLINK; fi
 ln -s "${VIM_LOC}/bundle/vim-colorschemes/colors" $COLORSLINK
-unset -v COLORSLINK VIM_LOC
 # Install fonts
-bash $VIMLINK/bundle/fonts/install.sh
+cd $VIM_LOC/bundle/fonts && ./install.sh
 echo "Refreshing the font cache..."
 sudo fc-cache -fv
 echo "Font cache refresh complete :)"
+
+unset -v DOTFILES COLORSLINK VIM_LOC
+echo "Dotfiles installation has completed!"

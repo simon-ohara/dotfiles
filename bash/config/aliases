@@ -65,6 +65,8 @@ alias splice_build='cd $SPLICER_BUILD_DIR; remedy $SPLICE_DIR/src.remedy splicer
 alias splice_run='python $SPLICER2SERVER_DIR/webui/webui.py $SPLICER2SERVER_DIR/splicer2server_app/config/splicer2server_config.xml $SPLICER2SERVER_DIR/webui/ascp/autosvr.xml --port 8080'
 alias splice_run_old='cd $SPLICER2SERVER_DIR/webui; python webui.py --port 8080'
 alias splice='splice_build && splice_run'
+alias dns-vpn='sudo cp /etc/resolv.conf.vpn /etc/resolv.conf'
+alias dns-local='sudo rm /etc/resolv.conf && sudo ln -s /run/resolvconf/resolv.conf /etc/resolv.conf'
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
