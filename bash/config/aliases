@@ -40,6 +40,8 @@ function vx {
   eval 'vagrant ssh -c '"'cd /vagrant/; "$*"'"
 }
 
+# Virtualbox
+alias setup-vm='bash $BASHLOC/scripts/virtualbox'
 
 # Search functions
 alias findme='grep -nir --exclude=\*.svn\* --exclude=\*.swp'
