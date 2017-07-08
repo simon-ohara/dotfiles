@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Common working paths
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH:~/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH"
 
 # Make ViM the default terminal editor
 export EDITOR=vim
@@ -9,4 +9,4 @@ export EDITOR=vim
 # Load NVM
 # https://github.com/creationix/nvm#git-install
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
