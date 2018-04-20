@@ -21,10 +21,12 @@ Plugin 'ap/vim-css-color'
 " Plugin 'digitaltoad/vim-pug'
 " Plugin 'gavocanov/vim-js-indent'
 Plugin 'mxw/vim-jsx'
-Plugin 'othree/yajs.vim'
-Plugin 'othree/javascript-libraries-syntax.vim'
+" Plugin 'othree/yajs.vim'
+" Plugin 'othree/javascript-libraries-syntax.vim'
 " Plugin 'chrisbra/csv.vim'
 " Plugin 'terryma/vim-multiple-cursors'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'pangloss/vim-javascript'
 
 " ++++++++++++++++++++++++++++
 filetype plugin indent on
@@ -43,6 +45,8 @@ set smartindent
 set tabstop=2
 set shiftwidth=2
 set expandtab
+" Deleting
+set backspace=indent,eol,start
 " ColorScheme
 set t_Co=256
 set background=dark
