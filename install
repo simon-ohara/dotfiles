@@ -1,52 +1,59 @@
 #!/bin/bash
+# Change $TARGET_LOC to test installer
+TARGET_LOC=$HOME
+
+function symlink-dotfile () {
+  TARGET_FILE="${TARGET_LOC}/.${1##*/}"
+
+  if [ -L $TARGET_FILE ]; then
+    # If the existing dotfile is a symlink
+    # Remove it
+    rm $TARGET_FILE
+
+  elif [[ -f $TARGET_FILE || -d $TARGET_FILE ]]; then
+    BKP="${TARGET_LOC}/.dotfiles-bkp"
+    if [[ ! -d $BKP ]]; then mkdir $BKP; fi
+    # If the existing dotfile is a file or directory
+    # Move it to backup folder
+    mv $TARGET_FILE "${BKP}/"
+    unset -v BKP
+  fi
+  # Create symlink
+  ln -s "$1" $TARGET_FILE
+}
 
 # Store the Dotfiles Directory Location
 DOTLOC="${BASH_SOURCE%/*}"
 if [[ ! -d "$DOTLOC" ]]; then DOTLOC="$PWD"; fi
-ABSDOTLOC="${HOME}/${DOTLOC}"
-
-# Create Vim Folder Link
-VIMLINK="${DOTLOC}/links/vim"
-if [ -L $VIMLINK ]; then rm $VIMLINK; fi
-ln -s "${DOTLOC}/vim" $VIMLINK
-unset -v VIMLINK
 
 # Create Symlinks for all Dotfiles
 DOTFILES="${DOTLOC}/links/*"
-for D in $DOTFILES; do
-  HOMEFILE="${HOME}/.${D##*/}"
-  if [ -L $HOMEFILE ]; then
-    # If the existing dotfile is a symlink
-    # Remove it
-    rm $HOMEFILE
-  elif [[ -f $HOMEFILE || -d $HOMEFILE ]]; then
-    BKP="${HOME}/.bkp"
-    if [[ ! -d $BKP ]]; then mkdir $BKP; fi
-    # If the existing dotfile is a file or directory
-    # Move it to backup folder
-    mv $HOMEFILE "${BKP}/"
-    unset -v BKP
-  fi
-  # Create symlink
-  ln -s $D $HOMEFILE
-  unset -v HOMEFILE
-done
-unset -v DOTFILES
+for FILE in $DOTFILES; do symlink-dotfile $FILE; done
 
 # Load up the .bashrc
-source $HOME/.bashrc
+# This needs OS management - should bash_profile on mac
+source $TARGET_LOC/.bashrc
+
+# Create Vim Folder Link
+symlink-dotfile "${DOTLOC}/vim"
 
 # Additional ViM setup
-git clone https://github.com/gmarik/Vundle.vim.git "${DOTLOC}/vim/bundle/vundle"
+VIM_LOC="${TARGET_LOC}/.vim"
+git clone https://github.com/gmarik/Vundle.vim.git "${VIM_LOC}/bundle/vundle"
 # Install the plugins
 vim "+silent PluginInstall" "+silent qall"
 # Linkup the colors/ folder
-COLORSLINK="${DOTLOC}/vim/colors"
+COLORSLINK="${VIM_LOC}/colors"
 if [ -L $COLORSLINK ]; then rm $COLORSLINK; fi
-ln -s "${DOTLOC}/vim/bundle/vim-colorschemes/colors" $COLORSLINK
-unset -v COLORSLINK
+ln -s "${VIM_LOC}/bundle/vim-colorschemes/colors" $COLORSLINK
 # Install fonts
-bash $DOTLOC/vim/bundle/fonts/install.sh
-echo "Refreshing the font cache..."
-sudo fc-cache -fv
-echo "Font cache refresh complete :)"
+cd $VIM_LOC/bundle/fonts && ./install.sh
+
+
+# Refreshing font cache only for Linux
+# echo "Refreshing the font cache..."
+# sudo fc-cache -fv
+# echo "Font cache refresh complete :)"
+
+unset -v DOTFILES COLORSLINK VIM_LOC
+echo "Dotfiles installation has completed!"
