@@ -1,20 +1,18 @@
-# JS Stack on Ubuntu
+# JS Stack on macOS Mojave
 
 ### Configuration Files
 
 * .gitconfig
-* .bashrc (with modularised scripts)
+* (.bash_profile) .bashrc (with modularised scripts)
 * .vimrc (using vundle - includes .vim/ folder)
 
 
 ### Installation
 
-```bash
-sudo apt-get update
-sudo apt-get install -y git vim
-```
+Install brew and vim
 
 ```bash
+cd Development
 git clone git@github.com:simon-ohara/dotfiles.git
 bash dotfiles/install
 ```
@@ -32,32 +30,33 @@ source ~/.bashrc
 ```
 
 
-### Install NodeJS
+### Install ASDF-VM
 
-[Official Instructions](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
+[Official Instructions](https://asdf-vm.com/#/)
 
-Add the repository:
+Dependencies:
+
+* coreutils
+* automake
+* autoconf
+* openssl
+* libyaml
+* readline
+* libxslt
+* libtool
+* unixodbc
+
+### Install NodeJS:
+
+[Official Instructions](https://github.com/asdf-vm/asdf-nodejs)
+
+Dependencies:
+
+* coreutils
+* gpg
 
 ```bash
-curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
-```
-
-Enable `universe` repository:
-
-```bash
-sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
-```
-
-Fix and update installed packages:
-
-```bash
-sudo dpkg --configure -a && sudo apt-get update && sudo apt-get -y upgrade
-```
-
-Install NodeJS:
-
-```bash
-sudo apt-get install -y nodejs
+asdf install nodejs
 ```
 
 

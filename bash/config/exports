@@ -6,9 +6,9 @@
 # Make ViM the default terminal editor
 export EDITOR=vim
 
-# Load NVM
+# Load asdf
 # https://github.com/creationix/nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
-nvm use node
+export ASDF_DIR="$HOME/.asdf"
+[ -s "$ASDF_DIR/asdf.sh" ] && . "$ASDF_DIR/asdf.sh"
+[[ -r $ASDF_DIR/completions/asdf.bash ]] && . $ASDF_DIR/completions/asdf.bash
+asdf current
