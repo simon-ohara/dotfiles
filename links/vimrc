@@ -21,6 +21,7 @@ Plugin 'ap/vim-css-color'
 " Plugin 'digitaltoad/vim-pug'
 " Plugin 'gavocanov/vim-js-indent'
 Plugin 'mxw/vim-jsx'
+Plugin 'leafgarland/typescript-vim'
 " Plugin 'othree/yajs.vim'
 " Plugin 'othree/javascript-libraries-syntax.vim'
 " Plugin 'chrisbra/csv.vim'
@@ -57,6 +58,8 @@ syntax on
 set backupdir=$HOME/.vim/tmp
 set directory=$HOME/.vim/tmp
 set backupcopy=yes
+" MacVim
+set guifont=Noto\ Mono\ Nerd\ Font\ Complete\ Mono:h12
 
 " NERDTree Configs
 " Toggle Nerd Tree with Ctrl+L
