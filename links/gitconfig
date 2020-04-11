@@ -27,3 +27,5 @@
   lg = log -p
 [push]
 	default = simple
+[core]
+	autocrlf = input

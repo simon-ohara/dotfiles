@@ -20,14 +20,18 @@ Plugin 'ap/vim-css-color'
 " Plugin 'digitaltoad/vim-jade'
 " Plugin 'digitaltoad/vim-pug'
 " Plugin 'gavocanov/vim-js-indent'
-Plugin 'mxw/vim-jsx'
-Plugin 'leafgarland/typescript-vim'
+" Plugin 'mxw/vim-jsx'
+" Plugin 'leafgarland/typescript-vim'
 " Plugin 'othree/yajs.vim'
 " Plugin 'othree/javascript-libraries-syntax.vim'
 " Plugin 'chrisbra/csv.vim'
 " Plugin 'terryma/vim-multiple-cursors'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'pangloss/vim-javascript'
+Plugin 'leafoftree/vim-vue-plugin'
+Plugin 'neoclide/coc.nvim'
+Plugin 'prettier/vim-prettier'
+Plugin 'qpkorr/vim-renamer'
 
 " ++++++++++++++++++++++++++++
 filetype plugin indent on
@@ -98,4 +102,5 @@ au BufRead,BufNewFile Gemfile set filetype=ruby
 au BufRead,BufNewFile Guardfile set filetype=ruby
 au BufRead,BufNewFile Rakefile set filetype=ruby
 au BufRead,BufNewFile Fudgefile set filetype=ruby
+" au BufRead,BufNewFile *.vue set filetype=html
 let g:used_javascript_libs = 'underscore,react,flux'
